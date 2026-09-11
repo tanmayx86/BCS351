@@ -31,7 +31,7 @@ int main()
 
 
     int key = 25; 
-    printf("Enter the value of key to be searched:-  : \t");
+    printf("Enter the value of key to be searched: \t");
     scanf("%i", &key );
     // printf("The address of key is : %p \n", &key);
 
