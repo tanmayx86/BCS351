@@ -1,39 +1,66 @@
-#include <stdio.h> 
-// Function to perform binary search 
-int binarySearch(int arr[], int low, int high, int key) 
-{ 
-while (low <= high) { 
-int mid = low + (high - low) / 2; 
-// Check if key is at mid 
-if (arr[mid] == key) 
-    return mid;
-// If key is greater, ignore left half 
-if (arr[mid] < key) 
-    low = mid + 1; 
-// If key is smaller, ignore right half 
-else 
-    high = mid - 1; 
-} 
-return -1; // Key not found 
-} 
-// Function to print array 
-void printArray(int arr[], int n) { 
-for (int i = 0; i < n; i++) 
-    printf("%d ", arr[i]); 
-    printf("\n"); 
-} 
-int main() { 
-int arr[] = {2, 4, 10, 15, 18, 23, 32};  // Sorted array 
-int n = sizeof(arr) / sizeof(arr[0]); 
-int key;
-printf("Enter key to be searched : ");
-scanf("%d",&key);
-printf("Array:\n"); 
-printArray(arr, n); 
-int result = binarySearch(arr, 0, n - 1, key); 
-if (result != -1) 
-    printf("Element %d found at index %d.\n", key, result); 
-else 
-    printf("Element %d not found in the array.\n", key); 
-return 0; 
+#include <stdio.h>
+
+// Performs binary search on a sorted array
+int binarySearch(int data[], int size, int value)
+{
+    int start = 0;
+    int end = size - 1;
+
+    while (start <= end)
+    {
+        int middle = (start + end) / 2;
+
+        if (data[middle] == value)
+        {
+            return middle;
+        }
+        else if (data[middle] < value)
+        {
+            start = middle + 1;
+        }
+        else
+        {
+            end = middle - 1;
+        }
+    }
+
+    return -1;
+}
+
+// Displays all elements of the array
+void display(int data[], int size)
+{
+    printf("Elements in the array: ");
+
+    for (int i = 0; i < size; i++)
+    {
+        printf("%d ", data[i]);
+    }
+
+    printf("\n");
+}
+
+int main()
+{
+    int numbers[] = {2, 4, 10, 15, 18, 23, 32};
+    int size = sizeof(numbers) / sizeof(numbers[0]);
+    int value, position;
+
+    display(numbers, size);
+
+    printf("Enter the element you want to search: ");
+    scanf("%d", &value);
+
+    position = binarySearch(numbers, size, value);
+
+    if (position >= 0)
+    {
+        printf("%d is present at position %d.\n", value, position + 1);
+    }
+    else
+    {
+        printf("%d is not present in the array.\n", value);
+    }
+
+    return 0;
 }
