@@ -11,7 +11,7 @@ int binarySearch(int data[], int size, int value)
         int middle = (start + end) / 2;
 
         if (data[middle] == value)
-        {
+        { 
             return middle;
         }
         else if (data[middle] < value)
